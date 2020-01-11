@@ -1,5 +1,5 @@
 // This is a class that tests the Card class.
-public class CardTester {
+public class cardTester {
 
 // The main method in this class checks the Card operations for consistency.
  public static void main(String[] args) {

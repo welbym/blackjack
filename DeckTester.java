@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 // This is a class that tests the Deck class.
-public class DeckTester {
+public class deckTester {
 
 // The main method in this class checks the Deck operations for consistency.
  public static void main(String[] args) {

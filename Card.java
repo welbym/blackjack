@@ -1,7 +1,7 @@
-// Card.java represents a single playing card. /////////////////////////
+// Card.java represents a single playing card.
 public class Card {
 
-// Variables ///////////////////////////////////////////////////////////
+// Variables
 
 /* String value that holds the rank value of the card.
  * String version of cardPointValue.
@@ -18,7 +18,6 @@ public class Card {
  * jack
  * queen
  * king
- * joker
  */
 private String cardRank;
 
@@ -33,8 +32,6 @@ private int cardPointValue;
  * spades
  * clubs
  * diamonds
- * 
- * joker options are either white or black
  */
 private String cardSuit;
 
@@ -43,16 +40,11 @@ private String cardSuit;
 */
 private int cardPlace;
 
-////////////////////////////////////////////////////////////////////////
-
-// Create new Card /////////////////////////////////////////////////////
-
 /**
 * Creates a new Card instance.
 * @param cardRank a String value containing the rank of the card.
 * @param cardSuit a String value containing the suit of the card.
 * @param cardPointValue an int value containing the point value of the card.
-* @param cardPlace an int value that shows where the card falls in the deck.
 */
 public Card(String cardRank, String cardSuit, int cardPointValue) {
   this.cardRank = cardRank;
@@ -61,9 +53,7 @@ public Card(String cardRank, String cardSuit, int cardPointValue) {
   this.cardPlace = -1;
 }
 
-////////////////////////////////////////////////////////////////////////
-
-// Accessor methods ////////////////////////////////////////////////////
+// Accessor methods
 
 /**
 * Accesses this Card's rank.
@@ -112,9 +102,7 @@ public boolean matches(Card otherCard) {
     return false;
  }
 
- ////////////////////////////////////////////////////////////////////////
-
- // Mutator methods /////////////////////////////////////////////////////
+ // Mutator methods
 
  /**
  * Changes the variable cardPlace
@@ -124,9 +112,7 @@ public boolean matches(Card otherCard) {
    this.cardPlace = cardPlace;
  }
 
- ////////////////////////////////////////////////////////////////////////
-
- // toString method /////////////////////////////////////////////////////
+ // toString method
 
 /**
 * Converts the rank, suit, and point value into a string in the format
