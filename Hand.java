@@ -75,18 +75,33 @@ public class Hand {
    * Converts the entire Hand into a string value.
    * @return a String containing every card in Hand.
    */
-   @Override
-    public String toString() {
+    public String toString(boolean dealer) {
       String handString = "";
-      if(this.handCards.size()==0) {
-        handString = "Hand is empty.";
-      } else {
-        for(int i = 0; i < this.handCards.size(); i++) {
-          if(i == this.handCards.size()-1) {handString += "and ";}
-          handString += this.handCards.get(i).rank() + " of " +
-          this.handCards.get(i).suit();
-          if(i < this.handCards.size()-1) {handString += ", ";} else
-          {handString += ".";}
+      if(dealer) {
+        if(this.handCards.size()==0) {
+          handString = "Dealer hand is empty.";
+        } else {
+          handString += "Dealer is holding the ";
+          for(int i = 0; i < this.handCards.size()-1; i++) {
+            handString += this.handCards.get(i).rank() + " of " +
+            this.handCards.get(i).suit();
+            if(i < this.handCards.size()-2) {handString += ", ";}
+            else {handString += ", and a hidden card.";}
+          }
+        }
+      }
+      else {
+        if(this.handCards.size()==0) {
+          handString = "Hand is empty.";
+        } else {
+          handString += "You are holding the ";
+          for(int i = 0; i < this.handCards.size(); i++) {
+            if(i == this.handCards.size()-1) {handString += "and ";}
+            handString += this.handCards.get(i).rank() + " of " +
+            this.handCards.get(i).suit();
+            if(i < this.handCards.size()-1) {handString += ", ";}
+            else {handString += ".";}
+          }
         }
       }
       return handString;

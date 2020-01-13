@@ -21,13 +21,15 @@ public class handTester {
    dealer.add(five);
    dealer.add(six);
 
-   System.out.println("You are holding the " + player.toString());
+   System.out.println(player.toString(false));
    System.out.println(player.points());
+
+   System.out.println(dealer.toString(true));
 
    System.out.println(player.checkWinner(dealer));
 
    player.clear();
-   System.out.println(player.toString());
+   System.out.println(player.toString(false));
 
   }
 }
