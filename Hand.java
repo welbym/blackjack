@@ -81,7 +81,6 @@ public class Hand {
       if(this.handCards.size()==0) {
         handString = "Hand is empty.";
       } else {
-        handString += "Hand is holding the ";
         for(int i = 0; i < this.handCards.size(); i++) {
           if(i == this.handCards.size()-1) {handString += "and ";}
           handString += this.handCards.get(i).rank() + " of " +
