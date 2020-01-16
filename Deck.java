@@ -28,7 +28,10 @@ public Deck(){
   this.deckCards = new ArrayList<Card>();
   for(int s = 0; s < 4; s++){
     for(int r = 0; r < 12; r++) {
-      this.deckCards.add(new Card(ranks[r],suits[s],r + 1));
+      if(ranks[r].equals("jack")||ranks[r].equals("queen")||ranks[r].equals("king")){
+        this.deckCards.add(new Card(ranks[r], suits[s], 10));
+      } else
+        this.deckCards.add(new Card(ranks[r],suits[s],r + 1));
     }
   }
 }
