@@ -7,16 +7,22 @@ public class Hand {
   // Variables
 
   /**
-   * cards contains all the cards in the Hand.
+   * handCards contains all the cards in the Hand.
    */
   private List<Card> handCards;
+
+  /**
+  * determines if player or dealer
+  */
+  private boolean dealer;
 
   /**
   * Creates a new Hand instance.
   * Default call to 'new Hand()' initializes an empty hand.
   */
-  public Hand(){
+  public Hand(boolean dealer){
     this.handCards = new ArrayList<Card>();
+    this.dealer = dealer;
   }
 
   // Accessor methods
@@ -75,7 +81,8 @@ public class Hand {
    * Converts the entire Hand into a string value.
    * @return a String containing every card in Hand.
    */
-    public String toString(boolean dealer) {
+   @Override
+    public String toString() {
       String handString = "";
       if(dealer) {
         if(this.handCards.size()==0) {

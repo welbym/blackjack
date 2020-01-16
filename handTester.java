@@ -10,8 +10,8 @@ public class handTester {
    Card five = new Card("two", "diamonds", 2);
    Card six = new Card("king", "clubs", 12);
 
-   Hand player = new Hand();
-   Hand dealer = new Hand();
+   Hand player = new Hand(false);
+   Hand dealer = new Hand(true);
 
    player.add(one);
    player.add(two);
@@ -21,15 +21,15 @@ public class handTester {
    dealer.add(five);
    dealer.add(six);
 
-   System.out.println(player.toString(false));
+   System.out.println(player.toString());
    System.out.println(player.points());
 
-   System.out.println(dealer.toString(true));
+   System.out.println(dealer.toString());
 
    System.out.println(player.checkWinner(dealer));
 
    player.clear();
-   System.out.println(player.toString(false));
+   System.out.println(player.toString());
 
   }
 }
