@@ -12,17 +12,24 @@ public class Hand {
   private List<Card> handCards;
 
   /**
-  * determines if player or dealer
+  * Determines if the hand belongs to player or dealer.
   */
   private boolean dealer;
 
   /**
+  * Determines if the last card will be hidden.
+  */
+  private boolean hideLastCard;
+
+  /**
   * Creates a new Hand instance.
   * Default call to 'new Hand()' initializes an empty hand.
+  * @param dealer determines if the hand belongs to dealer or player.
   */
-  public Hand(boolean dealer){
+  public Hand(boolean dealer, boolean hide){
     this.handCards = new ArrayList<Card>();
     this.dealer = dealer;
+    this.hideLastCard = hide;
   }
 
   // Accessor methods
@@ -40,25 +47,33 @@ public class Hand {
   }
 
   /**
-  * Checks to see if dealer or player won.
+  * Checks to see if dealer or player won. Only call on player hand.
   * @param dealer the dealers set of cards.
   * @return a String with a message saying who won.
   */
   public String checkWinner(Hand dealer) {
     int playerPoints = this.points();
     int dealerPoints = dealer.points();
-    if((playerPoints>dealerPoints || dealerPoints>21) && playerPoints<=21) {
+    if (playerPoints < 21) {
+      return "Keep playing!";
+    } else if (playerPoints > dealerPoints && playerPoints <= 21) {
       return "You have won!";
-    } else if((dealerPoints>playerPoints || playerPoints>21) && dealerPoints<=21){
+    } else if ((dealerPoints > playerPoints && dealerPoints <= 21) || playerPoints > 21) {
+      dealer.changeHideLastCard(false);
       return "Dealer has won.";
-    } else if(playerPoints>21 && dealerPoints>21){
-      return "No winner.";
     } else {
-      return "Restart game.";
+      return "Game broke";
     }
   }
 
   // Mutator methods
+
+  /**
+  * @param hide represents if dealer needs to hide their last card.
+  */
+  public void changeHideLastCard(boolean hide) {
+    this.hideLastCard = hide;
+  }
 
    /**
    * Adds a card to the end of the Hand.
@@ -84,20 +99,36 @@ public class Hand {
    @Override
     public String toString() {
       String handString = "";
-      if(dealer) {
-        if(this.handCards.size()==0) {
+      if (dealer && hideLastCard) {
+        if (this.handCards.size()==0) {
           handString = "Dealer hand is empty.";
         } else {
           handString += "Dealer is holding the ";
           for(int i = 0; i < this.handCards.size()-1; i++) {
             handString += this.handCards.get(i).rank() + " of " +
             this.handCards.get(i).suit();
-            if(i < this.handCards.size()-2) {handString += ", ";}
-            else {handString += ", and a hidden card.";}
+            if (i < this.handCards.size() - 2) {
+              handString += ", ";
+            }
+            else {
+              handString += ", and a hidden card.";
+            }
           }
         }
-      }
-      else {
+      } else if (dealer && !hideLastCard) {
+        if(this.handCards.size()==0) {
+          handString = "Dealer hand is empty.";
+        } else {
+          handString += "Dealer is holding the ";
+          for(int i = 0; i < this.handCards.size(); i++) {
+            if(i == this.handCards.size()-1) {handString += "and ";}
+            handString += this.handCards.get(i).rank() + " of " +
+            this.handCards.get(i).suit();
+            if(i < this.handCards.size()-1) {handString += ", ";}
+            else {handString += ".";}
+          }
+        }
+      } else {
         if(this.handCards.size()==0) {
           handString = "Hand is empty.";
         } else {

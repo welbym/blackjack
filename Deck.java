@@ -71,7 +71,7 @@ else
 * Modified call to 'deck(Card specificCard)' selects a specified card.
 * Modified call to 'deck(int place)' selects
 * a specific card using its place variable.
-* @param specificCard the card that is selected to be dealt.
+* @param place the index of the card that is selected to be dealt.
 * @return a Card from the deck.
 */
   public Card deal() {

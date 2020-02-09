@@ -10,8 +10,8 @@ public class handTester {
    Card five = new Card("two", "diamonds", 2);
    Card six = new Card("king", "clubs", 12);
 
-   Hand player = new Hand(false);
-   Hand dealer = new Hand(true);
+   Hand player = new Hand(false, false);
+   Hand dealer = new Hand(true, true);
 
    player.add(one);
    player.add(two);
